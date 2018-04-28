@@ -1,0 +1,15 @@
+.score-label {
+    font-size: 20;
+    font-weight: bold;
+}
+
+@keyframes new-card-anim {
+      0% { transform: translateX(500); }
+    100% { transform: translateX(0); }
+}
+.new-card {
+    animation-name: new-card-anim;
+    animation-duration: 350ms;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}

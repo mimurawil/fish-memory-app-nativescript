@@ -1,0 +1,38 @@
+<ActionBar title="Flash Cards" icon="" class="action-bar bg-dark text-white">
+    <ActionItem ios.position="right" (tap)="onAddCardTapped()">
+        <Button text="&#xe145;" class="icon action-item text-white"></Button>
+    </ActionItem>
+    <ActionItem ios.position="right" (tap)="onToggleDrawer()">
+        <Button text="&#xe5d2;" class="icon action-item text-white"></Button>
+    </ActionItem>
+</ActionBar>
+<RadSideDrawer drawerLocation="Right">
+    <StackLayout tkDrawerContent>
+        <default-nav-menu [currentScreen]="CURRENT_SCREEN"></default-nav-menu>
+    </StackLayout>
+    <StackLayout tkMainContent>
+        <StackLayout orientation="horizontal" class="bg-primary text-black" verticalAlignment="center" horizontalAlignment="center">
+            <Button text="Front" [class]="'option-button' + (allItemsFront ? ' active' : '')" width="50%" (tap)="onSetAllItemsFront()"></Button>
+            <Button text="Back" [class]="'option-button' + (!allItemsFront ? ' active' : '')" width="50%" (tap)="onSetAllItemsBack()"></Button>
+        </StackLayout>
+        <RadListView #myListView [items]="dataItems" swipeActions="true" (itemSwipeProgressStarted)="onSwipeCellStarted($event)"
+            selectionBehavior="Press" multipleSelection="true" (itemSelected)="onItemSelected($event)" (itemDeselected)="onItemDeselected($event)"
+            height="100%">
+            <ng-template tkListItemTemplate let-item="item" let-i="index" let-even="even" let-odd="odd">
+                <StackLayout [class]="'list-item-container' + (even ? ' bg-light' : ' bg-light-2')" width="100%">
+                    <Label [text]="showFront[i] ? 'Front' : 'Back'" [class]="'p-l-5 p-r-5 p-t-5' + (showFront[i] ? '' : ' pull-right')"></Label>
+                    <Label [text]="showFront[i] ? item.frontText : item.backText" textWrap="true" class="list-item li-font-size p-l-15 p-r-15 p-b-15 p-t-5 text-black"></Label>
+                </StackLayout>
+            </ng-template>
+
+            <GridLayout *tkListItemSwipeTemplate columns="auto, *, auto">
+                <StackLayout id="left-view" col="0" class="bg-primary" height="100%" verticalAlignment="center" (tap)="onLeftSwipeClick($event)">
+                    <Label text="Edit" class="p-15"></Label>
+                </StackLayout>
+                <StackLayout id="right-view" col="2" class="bg-danger" height="100%" verticalAlignment="center" (tap)="onRightSwipeClick($event)">
+                    <Label text="&#xe92b;" class="icon list-item p-15"></Label>
+                </StackLayout>
+            </GridLayout>
+        </RadListView>
+    </StackLayout>
+</RadSideDrawer>

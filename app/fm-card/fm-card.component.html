@@ -1,0 +1,3 @@
+<StackLayout [class]="'card-container p-15' + (flip ? ' flip-card' : '')" height="100%" (tap)="onCardTapped($event)" (swipe)="onCardTapped($event)">
+    <Label [text]="cardText" textWrap="true" class="card-text"></Label>
+</StackLayout>

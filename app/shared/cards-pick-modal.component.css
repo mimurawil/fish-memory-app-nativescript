@@ -1,0 +1,12 @@
+.option-button {
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom-width: 5;
+    font-size: 16;
+    font-family: "Muli-Bold";
+}
+
+.option-button.active {
+    border-color: #eae287;
+}
+

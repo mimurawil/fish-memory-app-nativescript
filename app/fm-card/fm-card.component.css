@@ -1,0 +1,24 @@
+.card-container {
+    border-radius: 10;
+    border-width: 2;
+    background-color: whitesmoke;
+    /* transform: rotate(-0.5); */
+}
+
+@keyframes flip-card-anim {
+      0% { transform: translateX(0); }
+     50% { transform: translateX(-500); }
+    100% { transform: translateX(0); }
+}
+.flip-card {
+    animation-name: flip-card-anim;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+.card-text {
+    font-family: "Lora-Regular";
+    font-size: 22;
+    color: #000;
+}

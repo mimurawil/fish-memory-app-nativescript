@@ -1,0 +1,27 @@
+<ActionBar title="Quiz!" icon="" class="action-bar bg-dark text-white">
+    <ActionItem ios.position="right" (tap)="onRestartQuizTapped()">
+        <Button text="&#xe5d5;" class="icon action-item text-white"></Button>
+    </ActionItem>
+    <ActionItem ios.position="right" (tap)="onExitQuizTapped()">
+        <Button text="&#xe879;" class="icon action-item text-white"></Button>
+    </ActionItem>
+</ActionBar>
+<StackLayout class="bg-primary-2 p-15">
+    <GridLayout rows="35, *, 60, 60">
+        <StackLayout row="0">
+            <Label [text]="'Question ' + currentQuestion" class="header-lv1"></Label>
+        </StackLayout>
+        <StackLayout row="1" [class]="'p-5' + (next ? ' new-card' : '')">
+            <fm-card [myCard]="card"></fm-card>
+        </StackLayout>
+        <StackLayout row="2" verticalAlignment="center">
+            <Label [text]="'Score: ' + currentScore + ' of ' + totalScore" class="text-center score-label text-secondary"></Label>
+        </StackLayout>
+        <GridLayout row="3" columns="*, *">
+            <Button col="0" text="&#xe5cd;" class="icon text-danger option-button btn btn-primary" (tap)="onWrongTapped()" [isEnabled]="!quizEnded"
+                width="45%"></Button>
+            <Button col="1" text="&#xe5ca;" class="icon text-success option-button btn btn-primary" (tap)="onRightTapped()" [isEnabled]="!quizEnded"
+                width="45%"></Button>
+        </GridLayout>
+    </GridLayout>
+</StackLayout>

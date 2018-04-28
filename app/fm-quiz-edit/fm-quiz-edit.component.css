@@ -1,0 +1,12 @@
+.label {
+    font-size: 20;
+}
+
+.text-field {
+    border-width: 1;
+    border-color: #000;
+    background-color: #f5f5f5;
+    color: #000;
+    font-family: "Lora-Regular";
+    font-size: 20;
+}

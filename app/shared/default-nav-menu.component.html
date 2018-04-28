@@ -1,0 +1,22 @@
+<ScrollView>
+    <StackLayout class="drawer-menu-container bg-secondary" height="100%">
+        <StackLayout class="drawer-menu-title p-l-25 p-t-15 p-r-25 p-b-10">
+            <!-- <Label text="Fish Memory App" class="h2"></Label> -->
+            <Label text="Navigation Menu" class="h2"></Label>
+        </StackLayout>
+        <StackLayout class="drawer-menu-items-container text-primary">
+            <Button [text]="isGameRunning ? 'Resume Quiz' : 'Play Quiz'" [class]="'text-left drawer-menu-item' + (currentScreen === PLAY_QUIZ ? ' active' : '')"
+                [nsRouterLink]="isGameRunning ? ['/play/quiz'] : ['/quizzes/select-play']" clearHistory="false"></Button>
+            <Button text="Card List" [class]="'text-left drawer-menu-item' + (currentScreen === CARDS_LIST ? ' active' : '')" [nsRouterLink]="['/cards']"
+                clearHistory="true"></Button>
+            <Button text="Create a Card" [class]="'text-left drawer-menu-item' + (currentScreen === EDIT_CARD ? ' active' : '')" [nsRouterLink]="['/cards/new']"
+                clearHistory="false"></Button>
+            <Button text="Quiz List" [class]="'text-left drawer-menu-item' + (currentScreen === QUIZ_LIST ? ' active' : '')" [nsRouterLink]="['/quizzes']"
+                clearHistory="true"></Button>
+            <Button text="Create a Quiz" [class]="'text-left drawer-menu-item' + (currentScreen === EDIT_QUIZ ? ' active' : '')" [nsRouterLink]="['/quizzes/new']"
+                clearHistory="false"></Button>
+            <Button text="About" class="text-left drawer-menu-item" [nsRouterLink]="['/about']" clearHistory="false"></Button>
+
+        </StackLayout>
+    </StackLayout>
+</ScrollView>

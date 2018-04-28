@@ -1,0 +1,31 @@
+Button {
+    text-transform: uppercase;
+}
+
+TextView {
+    padding-top: 10;
+    border-radius: 5;
+    padding-left: 10;
+    padding-right: 10;
+}
+
+TextField, .text-field {
+    border-radius: 5;
+    padding-left: 10;
+    padding-right: 10;
+}
+
+.option-button {
+    height: 40;
+}
+
+.icon.action-item {
+    width: 40;
+}
+
+.icon.btn.btn-primary {
+    /* padding: 5; */
+    width: 50;
+    height: 40;
+    border-radius: 3;
+}

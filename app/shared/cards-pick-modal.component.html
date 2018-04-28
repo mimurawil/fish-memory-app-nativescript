@@ -1,0 +1,25 @@
+<ActionBar title="Add Cards" icon="" class="action-bar bg-dark text-white">
+</ActionBar>
+<GridLayout rows="65, *, 80">
+    <StackLayout row="0" orientation="horizontal" class="bg-primary text-black" verticalAlignment="center" horizontalAlignment="center"
+        height="100%">
+        <Button text="Front" [class]="'option-button' + (showFront ? ' active' : '')" width="50%" (tap)="onSetAllItemsFront()" height="100%"></Button>
+        <Button text="Back" [class]="'option-button' + (!showFront ? ' active' : '')" width="50%" (tap)="onSetAllItemsBack()" height="100%"></Button>
+    </StackLayout>
+    <RadListView row="1" #myListView [items]="dataItems" selectionBehavior="Press" multipleSelection="true" (itemSelected)="onItemSelected($event)"
+        (itemDeselected)="onItemDeselected($event)" height="100%">
+        <ng-template tkListItemTemplate let-item="item" let-i="index" let-even="even" let-odd="odd">
+            <GridLayout rows="auto, auto" columns="5, *">
+                <StackLayout row="0" col="0" [class]="selectedItems[i] ? 'bg-success' : ''"> </StackLayout>
+                <StackLayout row="0" col="1" width="100%" class="bg-white">
+                    <Label [text]="showFront ? 'Front' : 'Back'" [class]="'p-l-5 p-r-5 p-t-5' + (showFront ? '' : ' pull-right')"></Label>
+                    <Label [text]="showFront ? item.frontText : item.backText" textWrap="true" class="list-item li-font-size p-l-15 p-r-15 p-b-15 p-t-5 text-black"></Label>
+                </StackLayout>
+                <StackLayout row="1" colSpan="2" class="hr-light"></StackLayout>
+            </GridLayout>
+        </ng-template>
+    </RadListView>
+    <StackLayout row="2" class="bg-primary" verticalAlignment="center" height="100%">
+        <Button text="Confirm" class="text-success btn btn-primary font-bold" width="50%" (tap)="onConfirmTapped()"></Button>
+    </StackLayout>
+</GridLayout>

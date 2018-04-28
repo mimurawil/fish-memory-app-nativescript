@@ -1,0 +1,37 @@
+<ActionBar [title]="play ? 'Select to Play' : 'Quizzes'" icon="" class="action-bar bg-dark text-white">
+    <NavigationButton *ngIf="play" text="Back" icon="res://ic_arrow_back_white_24dp" (tap)="goBack()"></NavigationButton>
+    <ActionItem ios.position="right" (tap)="onAddQuizTapped()">
+        <Button text="&#xe145;" class="icon action-item text-white"></Button>
+    </ActionItem>
+    <ActionItem ios.position="right" (tap)="onToggleDrawer()">
+        <Button text="&#xe5d2;" class="icon action-item text-white"></Button>
+    </ActionItem>
+</ActionBar>
+<RadSideDrawer #myDrawer drawerLocation="Right">
+    <StackLayout tkDrawerContent>
+        <default-nav-menu [currentScreen]="CURRENT_SCREEN"></default-nav-menu>
+    </StackLayout>
+    <StackLayout tkMainContent>
+        <RadListView #myListView [items]="dataItems" swipeActions="true" (itemSwipeProgressStarted)="onSwipeCellStarted($event)"
+            selectionBehavior="Press" multipleSelection="false" (itemSelected)="onItemSelected($event)" (itemDeselected)="onItemSelected($event)"
+            height="100%">
+
+            <ng-template tkListItemTemplate let-item="item" let-i="index" let-even="even" let-odd="odd">
+                <StackLayout [class]="'list-item-container' + (even ? ' bg-light' : ' bg-light-2')" width="100%">
+                    <Label [text]="item.title" class="p-l-15 p-t-15 p-r-15 li-font-size text-black"></Label>
+                    <Label [text]="'Cards: ' + item.cardIds.length" class="p-l-15 p-r-15 p-b-10 pull-right"></Label>
+                </StackLayout>
+            </ng-template>
+
+            <GridLayout *tkListItemSwipeTemplate columns="auto, *, auto">
+                <StackLayout id="left-view" col="0" class="bg-primary" height="100%" verticalAlignment="center" (tap)="onLeftSwipeClick($event)">
+                    <Label text="Edit" class="p-15"></Label>
+                </StackLayout>
+                <StackLayout id="right-view" col="2" class="bg-danger" height="100%" verticalAlignment="center" (tap)="onRightSwipeClick($event)">
+                    <Label text="&#xe92b;" class="icon list-item p-15"></Label>
+                </StackLayout>
+            </GridLayout>
+
+        </RadListView>
+    </StackLayout>
+</RadSideDrawer>

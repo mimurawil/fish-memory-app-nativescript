@@ -1,0 +1,38 @@
+<ActionBar [title]="isNewQuiz ? 'New Quiz' : 'Edit Quiz'" icon="" class="action-bar bg-dark text-white">
+    <NavigationButton text="Back" icon="res://ic_arrow_back_white_24dp" (tap)="goBack()"></NavigationButton>
+</ActionBar>
+<GridLayout rows="60, 70, *, 60" class="bg-primary-2">
+    <StackLayout row="0" orientation="horizontal" class="p-l-15 p-t-15 p-r-15">
+        <Label text="Title: " class="label text-white" verticalAlignment="center"></Label>
+        <TextField [(ngModel)]="myQuiz.title" class="text-field" width="80%"></TextField>
+    </StackLayout>
+    <GridLayout row="1" columns="*, 100" class="p-l-15 m-t-10">
+        <Label col="0" text="Card List:" class="header-lv2 m-r-15" verticalAlignment="center"></Label>
+        <Button col="1" text="&#xe145;" class="icon text-white btn btn-primary" (tap)="onAddCardTapped($event)"></Button>
+    </GridLayout>
+    <RadListView row="2" #myListView [items]="myQuiz.cards" swipeActions="true" (itemSwipeProgressStarted)="onSwipeCellStarted($event)"
+        selectionBehavior="Press" multipleSelection="false" (itemSelected)="onItemSelected($event)" (itemDeselected)="onItemSelected($event)"
+        height="100%" class="m-l-15 m-t-10 m-r-15 m-b-15 bg-white">
+
+        <ng-template tkListItemTemplate let-item="item" let-i="index" let-even="even" let-odd="odd">
+            <StackLayout [class]="'list-item-container' + (even ? ' bg-light' : ' bg-light-2')" width="100%">
+                <Label [text]="showFront[i] ? 'Front' : 'Back'" [class]="'p-l-5 p-r-5 p-t-5' + (showFront[i] ? '' : ' pull-right')"></Label>
+                <Label [text]="showFront[i] ? item.frontText : item.backText" textWrap="true" class="list-item li-font-size p-l-15 p-r-15 p-b-15 p-t-5 text-black"></Label>
+            </StackLayout>
+        </ng-template>
+
+        <GridLayout *tkListItemSwipeTemplate columns="auto, *, auto">
+            <!-- <StackLayout id="left-view" col="0" class="bg-primary" height="100%" verticalAlignment="center" (tap)="onLeftSwipeClick($event)">
+                <Label text="Edit" class="p-15"></Label>
+            </StackLayout> -->
+            <StackLayout id="right-view" col="2" class="bg-danger text-secondary" height="100%" verticalAlignment="center" (tap)="onRightSwipeClick($event)">
+                <Label text="&#xe16c;" class="icon list-item p-15"></Label>
+            </StackLayout>
+        </GridLayout>
+
+    </RadListView>
+    <StackLayout row="3" verticalAlignment="center">
+        <Button text="Save" class="text-success btn btn-primary font-bold" width="50%" (tap)="onSaveTapped()" [isEnabled]="isSafeToSave"></Button>
+    </StackLayout>
+
+</GridLayout>

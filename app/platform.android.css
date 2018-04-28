@@ -1,0 +1,15 @@
+TextView {
+    border-radius: 10;
+    padding-left: 15;
+    padding-right: 15;
+}
+
+TextField, .text-field {
+    border-radius: 10;
+    padding-left: 15;
+    padding-right: 15;
+}
+
+.icon.action-item {
+    width: 55;
+}

@@ -1,0 +1,89 @@
+/*
+In NativeScript, the app.css file is where you place CSS rules that
+you would like to apply to your entire application. Check out
+http://docs.nativescript.org/ui/styling for a full list of the CSS
+selectors and properties you can use to style UI components.
+
+/*
+In many cases you may want to use the NativeScript core theme instead
+of writing your own CSS rules. For a full list of class names in the theme
+refer to http://docs.nativescript.org/ui/theme.
+*/
+@import '~nativescript-theme-core/css/core.light.css';
+@import 'platform.css';
+
+* {
+    font-family: "Muli-Regular";
+}
+
+.bg-white     { background-color: #fff; }
+.bg-primary   { background-color: #7f9d9a; }
+.bg-primary-2 { background-color: #564533; }
+.bg-secondary { background-color: #eae287; }
+.bg-success   { background-color: #28a745; }
+.bg-danger    { background-color: #dc3545; }
+.bg-warning   { background-color: #ffc107; }
+.bg-info      { background-color: #17a2b8; }
+.bg-light     { background-color: #b7d8b6; }
+.bg-light-2   { background-color: #e7fde6; }
+.bg-dark      { background-color: #3c5250; }
+
+.text-black     { color: #000; }
+.text-white     { color: #fff; }
+.text-primary   { color: #564533; }
+.text-secondary { color: #eae287; }
+.text-success   { color: #28a745; }
+.text-danger    { color: #dc3545; }
+
+.border-secondary { border-color: #eae287; }
+
+.btn.btn-primary { background-color: #2f413f; }
+
+.font-bold { font-weight: bold; }
+
+.icon {
+    font-family: "icomoon";
+    font-size: 20;
+}
+.icon.action-item {
+    font-size: 28;
+    background-color: transparent;
+    border-color: transparent;
+    border-width: 1;
+    /* border-width: 0 !important; */
+    /* box-shadow: transparent; */
+}
+.icon.list-item {
+    font-size: 35;
+    border-width: 0;
+}
+.icon.btn.btn-primary {
+    font-size: 24;
+    font-weight: bold;
+}
+
+.header-lv1 {
+    color: white;
+    font-size: 24;
+}
+.header-lv2 {
+    color: white;
+    font-size: 22;
+}
+
+/* 
+ * LISTS
+ */
+ .list-item-container {
+    border-bottom-width: 1;
+    border-color: #808080;
+}
+
+#left-view > Label {
+    font-weight: bold;
+    font-size: 16;
+}
+
+.li-font-size {
+    font-size: 18;
+}

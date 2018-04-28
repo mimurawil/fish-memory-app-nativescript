@@ -1,0 +1,18 @@
+<ActionBar [title]="isNewCard ? 'New Card' : 'Edit Card'" icon="" class="action-bar bg-dark text-white">
+    <NavigationButton text="Back" icon="res://ic_arrow_back_white_24dp" (tap)="goBack()"></NavigationButton>
+</ActionBar>
+<GridLayout rows="*, 60" class="bg-primary-2">
+    <ScrollView row="0">
+        <StackLayout class="p-15">
+            <Label text="Front:" class="header-lv1"></Label>
+            <TextView [(ngModel)]="frontText" hint="Front Text" editable="true" class="text-view" height="200"></TextView>
+
+            <Label text="Back:" class="header-lv1 m-t-10"></Label>
+            <TextView [(ngModel)]="backText" hint="Back Text" editable="true" class="text-view" height="200"></TextView>
+
+        </StackLayout>
+    </ScrollView>
+    <StackLayout row="1" verticalAlignment="center">
+        <Button text="Save" class="text-success btn btn-primary font-bold" width="50%" (tap)="onSaveTapped()" [isEnabled]="isSafeToSave"></Button>
+    </StackLayout>
+</GridLayout>
